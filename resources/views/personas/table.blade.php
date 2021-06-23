@@ -1,40 +1,38 @@
-<div class="table-responsive-sm">
-    <table class="table table-striped" id="personas-table">
-        <thead>
-            <tr>
-                <th>Per Id</th>
-        <th>Per Apellidos</th>
-        <th>Per Nombre</th>
-        <th>Per Telefono</th>
-        <th>Per Direccion</th>
-        <th>Per Correo</th>
-        <th>Per Tipo</th>
-        <th>Per Estado</th>
-                <th colspan="3">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($personas as $personas)
-            <tr>
-                <td>{{ $personas->per_id }}</td>
-            <td>{{ $personas->per_apellidos }}</td>
-            <td>{{ $personas->per_nombre }}</td>
-            <td>{{ $personas->per_telefono }}</td>
-            <td>{{ $personas->per_direccion }}</td>
-            <td>{{ $personas->per_correo }}</td>
-            <td>{{ $personas->per_tipo }}</td>
-            <td>{{ $personas->per_estado }}</td>
-                <td>
-                    {!! Form::open(['route' => ['personas.destroy', $personas->id], 'method' => 'delete']) !!}
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>Nombres</th>
+		<th>Tipo</th>
+		<th>Usuario</th>
+		<th>Correo</th>
+		<th>Estado</th>
+		<th>Acciones</th>
+	</tr>
+	@foreach($personas as $p)
+	<tr>
+		<td>{{$loop->iteration}}</td>
+		<td>{{$p->per_apellidos.' '.$p->per_nombres}}</td>
+		@if($p->per_tipo=='A')
+		<td>Administrador</td>
+		@endif
+		@if($p->per_tipo=='E')
+		<td>Encargado</td>
+		@endif
+		@if($p->per_tipo=='C')
+		<td>Chofer</td>
+		@endif
+		<td>{{$p->per_usuario}}</td>
+		<td>{{$p->email}}</td>
+		@if($p->per_estado==1)
+		<td>Activo</td>
+		@else
+		<td>Inactivo</td>
+		@endif
+		<td>
                     <div class='btn-group'>
-                        <a href="{{ route('personas.show', [$personas->id]) }}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
-                        <a href="{{ route('personas.edit', [$personas->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
-                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        <a href="{{ route('personas.edit', [$p->per_id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
                     </div>
-                    {!! Form::close() !!}
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
-</div>
+		</td>
+	</tr>
+	@endforeach
+</table>

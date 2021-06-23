@@ -55,13 +55,13 @@
                             <li class="nav-item">
                                <li class="last">
                                 @if (Route::has('login'))
-                                <div class="btn-outline-info" style="padding:8px;border: 1px solid white; margin-right: -90px;margin-top: -20px">
+                                <div style=" margin-right: -90px;margin-top: -10px">
                                     @auth
                                     <a href="{{ url('/home') }}">Home</a>
                                     @else
                                     <a href="{{ route('login') }}"><i class="far fa-share-square"></i> Login</a>
 
-                       <!--  @if (Route::has('register'))
+                      <!--   @if (Route::has('register'))
                             <a href="{{ route('register') }}">Registro</a>
                             @endif -->
                             @endauth

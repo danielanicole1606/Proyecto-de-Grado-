@@ -24,6 +24,66 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+Route::resource('empresas', 'EmpresaController');
+
+Route::resource('trailers', 'TrailersController');
+
+Route::resource('tiposProductos', 'TiposProductoController');
+
+Route::resource('productos', 'ProductosController');
+
+Route::resource('clientes', 'ClientesController');
+
 Route::resource('personas', 'PersonasController');
 
-Route::resource('usuarios', 'UsuariosController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::resource('guiasTransportes', 'GuiasTransporteController');
+
+
+
+
+
+Route::resource('facturas', 'FacturasController');
+
+Route::resource('facturaDetalles', 'FacturaDetallesController');

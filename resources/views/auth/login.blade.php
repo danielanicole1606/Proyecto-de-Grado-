@@ -28,7 +28,8 @@
                     <div class="card-body">
                         <form method="post" action="{{ url('/login') }}">
                             @csrf
-                            <h1>Login</h1>
+                            <h1>Ingreso al sistema</h1>
+                            <img src="{{ asset('img/imagen1.png') }}" width="130px" style="margin-left: 80px">
                             <p class="text-muted">Iniciar sesión en su cuenta</p>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -36,11 +37,11 @@
                                       <i class="icon-user"></i>
                                     </span>
                                 </div>
-                                <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'' }}" name="email" value="{{ old('email') }}"
-                                       placeholder="Email">
-                                @if ($errors->has('email'))
+                                <input type="text" required class="form-control {{ $errors->has('name')?'is-invalid':'' }}" name="per_usuario" value="{{ old('per_usuario') }}"
+                                       placeholder="Nombre del usuario">
+                                @if ($errors->has('per_usuario'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('per_usuario') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -50,7 +51,7 @@
                                       <i class="icon-lock"></i>
                                     </span>
                                 </div>
-                                <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'' }}" placeholder="Password" name="password">
+                                <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'' }}" placeholder="Contraseña" name="password">
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
                                        <strong>{{ $errors->first('password') }}</strong>
@@ -59,7 +60,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <button class="btn btn-success px-4" type="submit">Ingresar</button>
+                                    <button class="btn btn-success px-4 pull-center" type="submit">Ingresar</button>
                                 </div>
                                 <!-- <div class="col-6 text-right">
                                     <a class="btn btn-link px-0" href="{{ url('/password/reset') }}">
@@ -72,7 +73,7 @@
                 </div>
                 <div class="card text-white bg-success py-5 d-md-down-none" style="width:44%">
                     <div class="card-body text-center">
-                        <img src="user1.png" style="height: 240px;">
+                        <img src="{{ asset('img/user2.png') }}" style="height: 240px;">
                        <!--  <div>
                             <h2>Sign up</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor

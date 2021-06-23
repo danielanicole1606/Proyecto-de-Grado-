@@ -12,8 +12,8 @@
                      <div class="card">
                          <div class="card-header">
                              <i class="fa fa-align-justify"></i>
-                             Personas
-                             <a class="pull-right" href="{{ route('personas.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
+                             Lista de personas
+                             <a class="pull-right" href="{{ route('personas.create') }}"><i class="fa fa-plus-square fa-lg"></i>Crear nuevo</a>
                          </div>
                          <div class="card-body">
                              @include('personas.table')
@@ -27,4 +27,3 @@
          </div>
     </div>
 @endsection
-

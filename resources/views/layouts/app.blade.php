@@ -1,3 +1,14 @@
+<?php
+        if(Auth::user()->per_tipo=='A'){
+        $tipo="Administrador";
+        }
+        if(Auth::user()->per_tipo=='E'){
+        $tipo="Encargado";
+       }
+        if(Auth::user()->per_tipo=='C'){
+        $tipo="Chofer";
+       }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +22,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@coreui/coreui@2.1.16/dist/css/coreui.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@icon/coreui-icons-free@1.0.1-alpha.1/coreui-icons-free.css">
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/83385095c8.js"></script>
+
 
      <!-- PRO version // if you have PRO version licence than remove comment and use it. -->
     {{--<link rel="stylesheet" href="https://unpkg.com/@coreui/icons@1.0.0/css/brand.min.css">--}}
@@ -27,8 +40,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="https://assets.infyom.com/logo/blue_logo_150x150.png" width="30" height="30"
-             alt="InfyOm Logo">
+        <img class="navbar-brand-full" src="{{ asset('img/imagen1.png') }}" width="120" alt="InfyOm Logo">
         <img class="navbar-brand-minimized" src="https://assets.infyom.com/logo/blue_logo_150x150.png" width="30"
              height="30" alt="InfyOm Logo">
     </a>
@@ -39,36 +51,36 @@
     <ul class="nav navbar-nav ml-auto">
         <li class="nav-item d-md-down-none">
             <a class="nav-link" href="#">
-                <i class="icon-bell"></i>
+               <i class="fas fa-user"></i>
                 <span class="badge badge-pill badge-danger">5</span>
             </a>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link" style="margin-right: 10px" data-toggle="dropdown" href="#" role="button"
                aria-haspopup="true" aria-expanded="false">
-                {{ Auth::user()->name }}
+                {{ Auth::user()->per_usuario.' / '.$tipo }}
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header text-center">
-                    <strong>Account</strong>
+                    <strong>Cuenta</strong>
                 </div>
                 <a class="dropdown-item" href="#">
-                    <i class="fa fa-envelope-o"></i> Messages
+                    <i class="fa fa-envelope-o"></i> Mensajes
                     <span class="badge badge-success">42</span>
                 </a>
                 <div class="dropdown-header text-center">
-                    <strong>Settings</strong>
+                    <strong>Configuraciones</strong>
                 </div>
                 <a class="dropdown-item" href="#">
-                    <i class="fa fa-user"></i> Profile</a>
+                    <i class="fa fa-user"></i> Perfil</a>
                 <a class="dropdown-item" href="#">
-                    <i class="fa fa-wrench"></i> Settings</a>
+                    <i class="fa fa-wrench"></i> Configuraciones</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">
-                    <i class="fa fa-shield"></i> Lock Account</a>
+                    <i class="fa fa-shield"></i> Lock account</a>
                 <a href="{{ url('/logout') }}" class="dropdown-item btn btn-default btn-flat"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <i class="fa fa-lock"></i>Logout
+                    <i class="fa fa-lock"></i>Salir
                 </a>
                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                     @csrf
@@ -102,6 +114,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@2.1.16/dist/js/coreui.min.js"></script>
-@stack('scripts')
+@yield('scripts')
 
 </html>
